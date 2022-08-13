@@ -12,7 +12,7 @@ export const App = () => {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ])
-  const [isFirstMount, setIsFirstMount] = useState(true);
+  let isFirstMount = true;
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const App = () => {
       localStorage.getItem('contacts') === null
       ? localStorage.setItem('contacts', JSON.stringify(contacts))
         : setContacts(JSON.parse(localStorage.getItem('contacts')))
-      setIsFirstMount(false);
+      isFirstMount = false;
     } else {
       localStorage.setItem('contacts', JSON.stringify(contacts))
     }
