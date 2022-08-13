@@ -17,9 +17,8 @@ export const App = () => {
 
   useEffect(() => {
     if (isFirstMount) {
-      localStorage.getItem('contacts') === null
-      ? localStorage.setItem('contacts', JSON.stringify(contacts))
-        : setContacts(JSON.parse(localStorage.getItem('contacts')))
+      localStorage.getItem('contacts') !== null
+      && setContacts(JSON.parse(localStorage.getItem('contacts')))
       setIsFirstMount(false);
     } else {
       localStorage.setItem('contacts', JSON.stringify(contacts))
