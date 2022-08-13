@@ -12,7 +12,7 @@ export const App = () => {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ])
-  let isFirstMount = true;
+  const [isFirstMount, setIsFirstMount] = useState(true);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -20,12 +20,12 @@ export const App = () => {
       localStorage.getItem('contacts') === null
       ? localStorage.setItem('contacts', JSON.stringify(contacts))
         : setContacts(JSON.parse(localStorage.getItem('contacts')))
-      isFirstMount = false;
+      setIsFirstMount(false);
     } else {
       localStorage.setItem('contacts', JSON.stringify(contacts))
     }
     
-  }, [contacts])
+  }, [contacts, isFirstMount])
   
   const formSubmitHandler = ({ name, number }) => {
     const newContact = {
