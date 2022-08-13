@@ -23,8 +23,8 @@ export const App = () => {
     } else {
       localStorage.setItem('contacts', JSON.stringify(contacts))
     }
-    
-  }, [contacts, isFirstMount])
+    // eslint-disable-next-line
+  }, [contacts])
   
   const formSubmitHandler = ({ name, number }) => {
     const newContact = {
